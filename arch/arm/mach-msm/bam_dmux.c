@@ -93,6 +93,33 @@ static struct bam_ops_if bam_default_ops = {
 };
 static struct bam_ops_if *bam_ops = &bam_default_ops;
 
+static struct bam_ops_if bam_default_ops = {
+	/* smsm */
+	.smsm_change_state_ptr = &smsm_change_state,
+	.smsm_get_state_ptr = &smsm_get_state,
+	.smsm_state_cb_register_ptr = &smsm_state_cb_register,
+	.smsm_state_cb_deregister_ptr = &smsm_state_cb_deregister,
+
+	/* sps */
+	.sps_connect_ptr = &sps_connect,
+	.sps_disconnect_ptr = &sps_disconnect,
+	.sps_register_bam_device_ptr = &sps_register_bam_device,
+	.sps_deregister_bam_device_ptr = &sps_deregister_bam_device,
+	.sps_alloc_endpoint_ptr = &sps_alloc_endpoint,
+	.sps_free_endpoint_ptr = &sps_free_endpoint,
+	.sps_set_config_ptr = &sps_set_config,
+	.sps_get_config_ptr = &sps_get_config,
+	.sps_device_reset_ptr = &sps_device_reset,
+	.sps_register_event_ptr = &sps_register_event,
+	.sps_transfer_one_ptr = &sps_transfer_one,
+	.sps_get_iovec_ptr = &sps_get_iovec,
+	.sps_get_unused_desc_num_ptr = &sps_get_unused_desc_num,
+
+	.dma_to = DMA_TO_DEVICE,
+	.dma_from = DMA_FROM_DEVICE,
+};
+static struct bam_ops_if *bam_ops = &bam_default_ops;
+
 #if defined(DEBUG)
 static uint32_t bam_dmux_read_cnt;
 static uint32_t bam_dmux_write_cnt;
