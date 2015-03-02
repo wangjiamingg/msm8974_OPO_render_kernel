@@ -1818,7 +1818,7 @@ static int __cpufreq_set_policy(struct cpufreq_policy *data,
 			CPUFREQ_NOTIFY, policy);
 
 	if (policy->cpu) {
-		cpu0_policy = cpufreq_cpu_get(0);
+		cpu0_policy = __cpufreq_cpu_get(0,0);
 		data->min = cpu0_policy->min;
 		data->max = cpu0_policy->max;
 	} else {
